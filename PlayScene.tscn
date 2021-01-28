@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Stage.gd" type="Script" id=3]
+[ext_resource path="res://Target/TargetCreater.tscn" type="PackedScene" id=4]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Label
+
+
+func _process(_delta):
+	text = str(Stage.score)
+"
+
+[node name="PlayScene" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -45.2548
+margin_top = -16.9706
+margin_right = 1038.75
+margin_bottom = 611.029
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stage" type="YSort" parent="."]
+script = ExtResource( 3 )
+
+[node name="TargetCreater" parent="Stage" instance=ExtResource( 4 )]
+position = Vector2( 0, -84.8528 )
+
+[node name="Player" parent="Stage" instance=ExtResource( 1 )]
+position = Vector2( 504.569, 324.366 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 817.0
+margin_top = 10.0
+margin_right = 856.0
+margin_bottom = 24.0
+rect_scale = Vector2( 5, 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 2
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 612.0
+margin_top = 7.0
+margin_right = 651.0
+margin_bottom = 21.0
+rect_scale = Vector2( 5, 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "score"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
